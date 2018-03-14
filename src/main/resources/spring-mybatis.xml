@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd  
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+    <context:component-scan base-package="com.sparks.jack">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+    </context:component-scan>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 连接初始值，连接池启动时创建的连接数量的初始值 -->
+        <property name="initialSize" value="${jdbc.initialSize}" />
+        <!-- 连接池的最大值，同一时间可以从池分配的最多连接数量，0时无限制 -->
+        <property name="maxActive" value="${jdbc.maxActive}" />
+        <!-- 最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止 ，0时无限制 -->
+        <property name="maxIdle" value="${jdbc.maxIdle}" />
+        <!-- 最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请 -->
+        <property name="minIdle" value="${jdbc.minIdle}" />
+        <!-- 申请连接时最长等待时间(s) -->
+        <property name="maxWait" value="${jdbc.maxWait}" />
+    </bean>
+
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- 自动扫描mapping.xml文件，**表示迭代查找,也可在sqlMapConfig.xml中单独指定xml文件 -->
+        <property name="mapperLocations" value="classpath*:com/sparks/jack/famewiki/db/mapper/*.xml" />
+    </bean>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.sparks.jack.db.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory" />
+    </bean>
+
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!-- 使用MethodInvokingJobDetailFactoryBean，任务类可以不实现Job接口，通过targetMethod指定调用方法-->
+    <!--<bean id="taskJob" class="com.zulong.keel.cmdb.quartz.SyncServerJob" />
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="name" value="DEFAULT_JOB" />
+        <property name="group" value="DEFAULT_JOB_GROUP" />
+        &lt;!&ndash; false表示等上一个任务执行完后再开启新的任务 &ndash;&gt;
+        <property name="concurrent" value="false" />
+        <property name="targetObject" ref="taskJob" />
+        <property name="targetMethod" value="execute" />
+    </bean>-->
+
+    <!--  调度触发器 -->
+    <!--<bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="DEFAULT_TRIGGER" />
+        <property name="group" value="DEFAULT_TRIGGER_GROUP" />
+        <property name="jobDetail" ref="jobDetail" />
+        &lt;!&ndash;<property name="cronExpression" value="0 0 4 * * ?" />&ndash;&gt;
+        <property name="cronExpression" value="0 0/1 * * * ?" />
+    </bean>-->
+
+    <!-- 调度工厂 -->
+   <!-- <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="myTrigger" />
+            </list>
+        </property>
+        <property name="configLocation" value="classpath:quartz.properties" />
+        <property name="autoStartup" value="false" />
+    </bean>-->
+</beans>

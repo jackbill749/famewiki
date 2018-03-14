@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zulong.keel.cmdb.db.dao.CountryDao">
+	<resultMap id="CountryResultMap" type="com.zulong.keel.cmdb.db.model.Country">
+	</resultMap>
+
+	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Country" useGeneratedKeys="true" keyProperty="id">
+		insert into country ( id, name, locate )
+		values (#{id}, #{name}, #{locate})
+	</insert>
+
+	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Country">
+		insert into country ( id, name, locate )
+		values (#{id}, #{name}, #{locate})
+	</insert>
+
+</mapper>

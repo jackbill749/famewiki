@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application>
+    <config>
+        <privateKey></privateKey>
+        <token_alive>43200</token_alive>
+    </config>
+
+    <!--redis信息-->
+    <redis>
+        <host></host>
+        <port>6379</port>
+        <maxactive>5</maxactive>
+        <maxidle>5</maxidle>
+        <maxwait>1000</maxwait>
+        <expiretime>7200</expiretime>
+        <password></password>
+    </redis>
+
+
+
+</application>

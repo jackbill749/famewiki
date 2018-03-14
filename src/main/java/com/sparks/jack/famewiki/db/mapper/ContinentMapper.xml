@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zulong.keel.cmdb.db.dao.ContinentDao">
+	<resultMap id="ContinentResultMap" type="com.zulong.keel.cmdb.db.model.Continent">
+	</resultMap>
+
+	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Continent" useGeneratedKeys="true" keyProperty="id">
+		insert into continent ( id, name )
+		values (#{id}, #{name})
+	</insert>
+
+	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Continent">
+		insert into continent ( id, name )
+		values (#{id}, #{name})
+	</insert>
+
+</mapper>

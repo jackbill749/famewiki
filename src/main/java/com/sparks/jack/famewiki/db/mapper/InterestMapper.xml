@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zulong.keel.cmdb.db.dao.InterestDao">
+	<resultMap id="InterestResultMap" type="com.zulong.keel.cmdb.db.model.Interest">
+	</resultMap>
+
+	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Interest">
+		insert into interest ( accountid, majorid )
+		values (#{accountid}, #{majorid})
+	</insert>
+
+	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Interest">
+		insert into interest ( accountid, majorid )
+		values (#{accountid}, #{majorid})
+	</insert>
+
+</mapper>

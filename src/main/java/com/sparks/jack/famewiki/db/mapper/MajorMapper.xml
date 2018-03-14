@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zulong.keel.cmdb.db.dao.MajorDao">
+	<resultMap id="MajorResultMap" type="com.zulong.keel.cmdb.db.model.Major">
+	</resultMap>
+
+	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Major" useGeneratedKeys="true" keyProperty="id">
+		insert into major ( id, pid, name )
+		values (#{id}, #{pid}, #{name})
+	</insert>
+
+	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Major">
+		insert into major ( id, pid, name )
+		values (#{id}, #{pid}, #{name})
+	</insert>
+
+</mapper>

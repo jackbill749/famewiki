@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application beans="com.zulong.keel.cmdb.db" beanbase="src/main/java">
+
+<!-- 伟人 -->
+<table name="immortal" charset="utf8mb4" engine="InnoDB">
+		<column name="id" 			 	sql-type="BIGINT" 		java-type="java.lang.Long"		not-null="true" 	comment="ID" auto-increment="true"/>
+		<column name="cname"			sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="中文名"/>
+		<column name="fname"			sql-type="varchar(32)"	java-type="java.lang.String"	not-null="false"	comment="外语名" />	
+		<column name="gender" 			sql-type="TINYINT" 		java-type="java.lang.Integer"	not-null="true" 	comment="性别 0:女 1:男" />
+		<column name="field"			sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="专业领域" />
+		<column name="avatar"			sql-type="varchar(128)"	java-type="java.lang.String"	not-null="true"		comment="头像地址" />		
+		<column name="nationality" 		sql-type="TINYINT" 		java-type="java.lang.Integer"	not-null="true" 	comment="国籍" />
+		<column name="born"				sql-type="varchar(64)"	java-type="java.lang.String"	not-null="true"		comment="出生地" />
+		<column name="birth" 			sql-type="datetime" 	java-type="java.util.Date"		not-null="true" 	comment="出生日期" />
+		<column name="death" 			sql-type="datetime" 	java-type="java.util.Date"		not-null="false" 	comment="死亡日期" />
+		<column name="constellation"	sql-type="varchar(20)"	java-type="java.lang.String"	not-null="false"	comment="星座"	/>
+		<column name="college"			sql-type="varchar(32)"	java-type="java.lang.String"	not-null="false"	comment="大学" />	
+		<column name="contribution"		sql-type="varchat(200)" java-type="java.lang.String"	not-null="true"		comment="主要贡献" />	
+		<column name="honor"			sql-type="varchar(200)"	java-type="java.lang.String"	not-null="true"		comment="获得荣誉" />			 
+		<column name="description" 		sql-type="varchar(256)" java-type="java.lang.String" 	not-null="false"	comment="简短描述" />
+		<column name="view"				sql-type="Integer"		java-type="java.lang.Integer"	not-null="true"		comment="查看次数" />
+		<column name="favor"			sql-type="Integer"		java-type="java.lang.Integer"	not-null="true"		comment="被赞数" />			
+		<column name="create_account" 	sql-type="BIGINT" 		java-type="java.lang.Long"		not-null="true" 	comment="词条创建者" />
+		<column name="create_time" 		sql-type="datetime" 	java-type="java.util.Date"		not-null="true" 	comment="创建时间" />
+		<column name="modify_account" 	sql-type="BIGINT" 		java-type="java.lang.Long"		not-null="false" 	comment="词条修改者" />
+		<column name="modify_time" 		sql-type="datetime" 	java-type="java.util.Date"		not-null="false" 	comment="修改时间" />
+
+		<primarykey name="pk_immortal" column="id" />
+		<index name="index_uniq_name" column="cname,birth" unique="true" />
+
+</table>
+	
+<!-- 国家 -->	
+<table name="country" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 			 	sql-type="Integer" 		java-type="java.lang.Integer"	not-null="true" 	comment="ID" auto-increment="true"/>
+	<column name="name"				sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="国家名"/>
+	<column name="locate"			sql-type="TINYINT"		java-type="java.lang.Integer"	not-null="true"		comment="属于哪个州"/>			
+	
+	<primarykey name="pk_country" column="id" />
+	<index name="index_uniq_name" column="name" unique="true" />
+</table>
+	
+<!-- 大洲 -->	
+<table name="continent" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 			 	sql-type="BIGINT" 		java-type="java.lang.Long"		not-null="true" 	comment="ID" auto-increment="true"/>
+	<column name="name"				sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="名字"/>
+	
+	<primarykey name="pk_continent" column="id" />
+		<index name="index_uniq_name" column="name" unique="true" />		
+</table>
+
+<!-- 专业分类 -->
+<table name="major" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 			 	sql-type="Integer" 		java-type="java.lang.Integer"	not-null="true" 	comment="ID" auto-increment="true"/>
+	<column name="pid"				sql-type="Integer"		java-type="java.lang.Integer"	not-null="false"	comment="父id" />
+	<column name="name"				sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="中文名"/>
+	
+	<primarykey name="pk_major" column="id" />
+	<index name="index_uniq_name" column="pid" unique="false" />
+			
+</table>
+	
+<!-- 评论表 -->
+<table name="evaluate" charset="utf8mb4" engine="InnoDB"> 
+	<column name="id"				sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="ID" auto-increment="true" />
+	<column name="immortalid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="伟人id" />
+	<column name="accountid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="评论者" />
+	<column name="create_time"		sql-type="datetime"		java-type="java.util.Date"		not-null="true"		comment="评论时间" />
+	<column name="content" 			sql-type="varchar(200)" java-type="java.lang.String"	not-null="true"		comment="评论内容" />
+	<column name="ip"				sql-type="varchar(32)"	java-type="java.lang.String"	not-null="false"	comment="评论者ip"/>
+	
+	<primarykey name="pk_evaluate" column="id" />
+	<index name="index_uniq_name" column="immortalid" unique="false" />
+	<index name="index_uniq_account" column="accountid" unique="false" />	
+</table>
+
+<!-- 人物介绍 -->
+<table name="introduce" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 				sql-type="BIGINT"  			java-type="java.lang.Long"		not-null="true"		comment="id"  auto-increment="true" />
+	<column name="immortalid"		sql-type="BIGINT"			java-type="java.lang.Long"		not-null="true"		comment="伟人id"	/>
+	<column name="content"			sql-type="varchar(3000)"  	java-type="java.lang.String"	not-null="true"		comment="人物介绍" />
+		
+	<primarykey name="pk_introduce" column="id" />
+	<index name="index_uniq_name" column="immortalid" unique="true" />	
+</table>
+
+
+<!-- 用户表 -->
+<table name="account" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 				sql-type="BIGINT"  		java-type="java.lang.Long"		not-null="true"		comment="id"  auto-increment="true" />
+	<column name="username"			sql-type="varchar(20)"	java-type="java.lang.String"	not-null="true"		comment="用户名"	/>
+	<column name="nickname"			sql-type="varchar(20)"  java-type="java.lang.String"	not-null="false"	comment="昵称"  />
+	<column name="salt"				sql-type="varchar(20)"  java-type="java.lang.String"	not-null="true"		comment="密码盐" />
+	<column name="password"			sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="密码" />	
+	<column name="avatar"			sql-type="varchar(128)"	java-type="java.lang.String"	not-null="false"	comment="头像地址" />
+	<column name="gender"			sql-type="TINYINT"		java-type="java.lang.Integer"	not-null="false"	comment="性别 0:女, 1:男" />
+	<column name="cellphone"		sql-type="varchar(15)"	java-type="java.lang.String"	not-null="false"	comment="手机号码" />
+	<column name="email"			sql-type="varchar(20)"	java-type="java.lang.String"	not-null="false"	comment="邮箱"	/>
+	<column name="birth"			sql-type="datetime"		java-type="java.util.Date"		not-null="false"	comment="出生日期" />	
+	<column name="describe"			sql-type="varchar(140)" java-type="java.lang.String"	not-null="false"	comment="描述" />
+	<column name="region"			sql-type="varchar(32)"	java-type="java.lang.String"	not-null="false"	comment="所在地区" />
+	<column name="country"			sql-type="Integer"		java-type="java.lang.Integer"	not-null="false"	comment="国家" />
+	<column name="regtime"			sql-type="datetime"		java-type="java.util.Date"		not-null="true"		comment="注册时间" />
+	<column name="registerip"		sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="注册ip" />			
+		
+		
+	<primarykey name="pk_account" column="id" />
+	<index name="index_uniq_name" column="username" unique="true" />
+	<index name="index_uniq_phone" column="cellphone" unique="true" />
+	<index name="index_uniq_mail" column="email" unique="true" />	 	
+</table>
+
+<!-- 第三方账号表 -->
+<table name="three" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 				sql-type="BIGINT"  		java-type="java.lang.Long"		not-null="true"		comment="id"  auto-increment="true" />
+	<column name="accountid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="用户id" />
+	<column name="threeplat"		sql-type="varchar(20)"  java-type="java.lang.String"	not-null="true"		comment="三方平台名字"/>
+	<column name="threeid"			sql-type="varchar(64)"	java-type="java.lang.String"	not-null="true"		comment="三方openid"/>
+	<column name="threenick"		sql-type="varchar(32)"	java-type="java.lang.String"	not-null="false"	comment="三方昵称"	/>
+	<column name="gender" 			sql-type="TINYINT"		java-type="java.lang.Integer"	not-null="true"		comment="性别   0:女 ,1:男" />
+	<column name="avatar"			sql-type="varchar(128)" java-type="java.lang.String"    not-null="false" 	comment="头像地址"/>
+	
+	<primarykey name="pk_three" column="id" />
+	<index name="index_uniq_name" column="accountid" unique="false" />
+</table>
+
+<!-- 用户感兴趣的专业列表 -->
+<table name="interest" charset="utf8mb4" engine="InnoDB">
+	<column name="accountid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="用户id" />
+	<column name="majorid"			sql-type="Integer"		java-type="java.lang.Integer"	not-null="true"		comment="专业id" />
+	
+	<primarykey name="pk_interest" column="accountid" />
+</table>
+
+<!-- 收藏夹 -->
+<table name="folder" charset="utf8mb4" engine="InnoDB">
+	<column name="id" 				sql-type="BIGINT"  		java-type="java.lang.Long"		not-null="true"		comment="id"  auto-increment="true" />
+	<column name="accountid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="用户id" />
+	<column name="name"				sql-type="varchar(32)"	java-type="java.lang.String"	not-null="true"		comment="名字" />
+	<column name="createtime"		sql-type="datetime"		java-type="java.util.Date" 		not-null="true"		comment="创建时间" />
+	
+	<primarykey name="pk_folder" column="id" />
+	<index name="index_uniq_name" column="accountid" unique="false" />
+</table>
+
+<!-- 用户的收藏 -->
+<table name="collection" charset="utf8mb4" engine="InnoDB">
+	<column name="accountid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="用户id" />
+	<column name="folderid"			sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="收藏夹id" />	
+	<column name="immortalid"		sql-type="BIGINT"		java-type="java.lang.Long"		not-null="true"		comment="伟人id" />
+
+	<primarykey name="pk_collection" column="accountid" />
+</table>
+
+
+
+
+</application>	

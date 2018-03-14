@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zulong.keel.cmdb.db.dao.AccountDao">
+	<resultMap id="AccountResultMap" type="com.zulong.keel.cmdb.db.model.Account">
+	</resultMap>
+
+	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Account" useGeneratedKeys="true" keyProperty="id">
+		insert into account ( id, username, nickname, salt, password, avatar, gender, cellphone, email, birth, describe, region, country, regtime, registerip )
+		values (#{id}, #{username}, #{nickname}, #{salt}, #{password}, #{avatar}, #{gender}, #{cellphone}, #{email}, #{birth}, #{describe}, #{region}, #{country}, #{regtime}, #{registerip})
+	</insert>
+
+	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Account">
+		insert into account ( id, username, nickname, salt, password, avatar, gender, cellphone, email, birth, describe, region, country, regtime, registerip )
+		values (#{id}, #{username}, #{nickname}, #{salt}, #{password}, #{avatar}, #{gender}, #{cellphone}, #{email}, #{birth}, #{describe}, #{region}, #{country}, #{regtime}, #{registerip})
+	</insert>
+
+</mapper>
