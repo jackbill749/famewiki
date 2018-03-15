@@ -4,8 +4,8 @@ package com.sparks.jack.famewiki.db.dao;
 import org.apache.ibatis.annotations.Param;
 
 public interface IntroduceDao {
-	int insertAndGetAotuIncrementID(com.zulong.keel.cmdb.db.model.Introduce record);
+	int insertAndGetAutoIncrementID(com.sparks.jack.famewiki.db.model.Introduce record);
 
-	int insert(com.zulong.keel.cmdb.db.model.Introduce record);
+	int insert(com.sparks.jack.famewiki.db.model.Introduce record);
 
 }

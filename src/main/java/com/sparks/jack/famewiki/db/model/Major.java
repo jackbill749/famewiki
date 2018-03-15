@@ -36,7 +36,7 @@ public class Major implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Major[");
+		builder.append("major[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");

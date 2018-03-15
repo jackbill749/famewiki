@@ -55,12 +55,4 @@ public class LoginController {
 		}
 		return result;
 	}
-
-
-	@RequestMapping(value = "register",produces = "application/json")
-	public BaseResult register(HttpServletRequest request,
-							   @RequestParam(value = "username",required = true)String username,
-							   @RequestParam(value = "password",required = true)String password,
-							   @RequestParam()
-							   @RequestParam(value = "")){}
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zulong.keel.cmdb.db.dao.FolderDao">
-	<resultMap id="FolderResultMap" type="com.zulong.keel.cmdb.db.model.Folder">
+<mapper namespace="com.sparks.jack.famewiki.db.dao.FolderDao">
+	<resultMap id="FolderResultMap" type="com.sparks.jack.famewiki.db.model.Folder">
 	</resultMap>
 
-	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Folder" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertAndGetAutoIncrementID" parameterType="com.sparks.jack.famewiki.db.model.Folder" useGeneratedKeys="true" keyProperty="id">
 		insert into folder ( id, accountid, name, createtime )
 		values (#{id}, #{accountid}, #{name}, #{createtime})
 	</insert>
 
-	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Folder">
+	<insert id="insert" parameterType="com.sparks.jack.famewiki.db.model.Folder">
 		insert into folder ( id, accountid, name, createtime )
 		values (#{id}, #{accountid}, #{name}, #{createtime})
 	</insert>

@@ -27,7 +27,7 @@ public class Interest implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Interest[");
+		builder.append("interest[");
 		builder.append("accountid=");
 		builder.append(accountid);
 		builder.append(", ");

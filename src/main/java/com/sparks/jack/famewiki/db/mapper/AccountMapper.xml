@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zulong.keel.cmdb.db.dao.AccountDao">
-	<resultMap id="AccountResultMap" type="com.zulong.keel.cmdb.db.model.Account">
+<mapper namespace="com.sparks.jack.famewiki.db.dao.AccountDao">
+	<resultMap id="AccountResultMap" type="com.sparks.jack.famewiki.db.model.Account">
 	</resultMap>
 
-	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Account" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertAndGetAutoIncrementID" parameterType="com.sparks.jack.famewiki.db.model.Account" useGeneratedKeys="true" keyProperty="id">
 		insert into account ( id, username, nickname, salt, password, avatar, gender, cellphone, email, birth, describe, region, country, regtime, registerip )
 		values (#{id}, #{username}, #{nickname}, #{salt}, #{password}, #{avatar}, #{gender}, #{cellphone}, #{email}, #{birth}, #{describe}, #{region}, #{country}, #{regtime}, #{registerip})
 	</insert>
 
-	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Account">
+	<insert id="insert" parameterType="com.sparks.jack.famewiki.db.model.Account">
 		insert into account ( id, username, nickname, salt, password, avatar, gender, cellphone, email, birth, describe, region, country, regtime, registerip )
 		values (#{id}, #{username}, #{nickname}, #{salt}, #{password}, #{avatar}, #{gender}, #{cellphone}, #{email}, #{birth}, #{describe}, #{region}, #{country}, #{regtime}, #{registerip})
 	</insert>
 
+	<select id="selectByName" resultMap="AccountResultMap">
+		select * from account where binary username = #{username}
+	</select>
+
+    <update id="updateAccountBasicInfo">
+        update account
+        <set>
+            <if test="nickname != null">nickname = #{nickname}</if>
+            <if test="avatar != null">avatar = #{avatar}</if>
+            <if test="birth != null">birth = #{birth}</if>
+            <if test="describe != null">describe = #{describe}</if>
+            <if test="region != null">region = #{region}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete FROM  account where id = #{id}
+    </delete>
 </mapper>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zulong.keel.cmdb.db.dao.EvaluateDao">
-	<resultMap id="EvaluateResultMap" type="com.zulong.keel.cmdb.db.model.Evaluate">
+<mapper namespace="com.sparks.jack.famewiki.db.dao.EvaluateDao">
+	<resultMap id="EvaluateResultMap" type="com.sparks.jack.famewiki.db.model.Evaluate">
 	</resultMap>
 
-	<insert id="insertAndGetAotuIncrementID" parameterType="com.zulong.keel.cmdb.db.model.Evaluate" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertAndGetAutoIncrementID" parameterType="com.sparks.jack.famewiki.db.model.Evaluate" useGeneratedKeys="true" keyProperty="id">
 		insert into evaluate ( id, immortalid, accountid, create_time, content, ip )
 		values (#{id}, #{immortalid}, #{accountid}, #{create_time}, #{content}, #{ip})
 	</insert>
 
-	<insert id="insert" parameterType="com.zulong.keel.cmdb.db.model.Evaluate">
+	<insert id="insert" parameterType="com.sparks.jack.famewiki.db.model.Evaluate">
 		insert into evaluate ( id, immortalid, accountid, create_time, content, ip )
 		values (#{id}, #{immortalid}, #{accountid}, #{create_time}, #{content}, #{ip})
 	</insert>

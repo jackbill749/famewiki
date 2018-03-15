@@ -1,5 +1,6 @@
 package com.sparks.jack.famewiki.service;
 
+import com.sparks.jack.famewiki.db.dao.AccountDao;
 import com.sparks.jack.famewiki.db.model.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

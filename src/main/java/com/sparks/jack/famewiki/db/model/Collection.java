@@ -36,7 +36,7 @@ public class Collection implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Collection[");
+		builder.append("collection[");
 		builder.append("accountid=");
 		builder.append(accountid);
 		builder.append(", ");

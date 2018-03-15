@@ -27,7 +27,7 @@ public class Continent implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Continent[");
+		builder.append("continent[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");

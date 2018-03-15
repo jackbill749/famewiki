@@ -36,7 +36,7 @@ public class Introduce implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Introduce[");
+		builder.append("introduce[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");
