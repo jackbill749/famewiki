@@ -21,6 +21,9 @@ public class AccountController {
 
 	@RequestMapping(value = "register",produces = "application/json")
 	public BaseResult register(HttpServletRequest request, RegisterParam param){
+		StringBuilder builder = new StringBuilder();
+		builder.append("register:param = ");
+		if(){}
 		return null;
 	}
 }
