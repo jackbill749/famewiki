@@ -1,5 +1,6 @@
 package com.sparks.jack.famewiki.service;
 
+import com.sparks.jack.famewiki.db.dao.AccountDao;
 import com.sparks.jack.famewiki.db.model.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class AccountService {
 		builder.append("selectByName:").append("name=").append(name);
 		Account account = null;
 		try{
-			account = accountDao.selectByName(name);
+			//account = accountDao.selectByName(name);
 			logger.info(builder.append(account).toString());
 			return account;
 		}catch(Exception e){
@@ -41,7 +42,7 @@ public class AccountService {
 		builder.append("selectById:").append("id = ").append(id);
 		Account account = null;
 		try{
-			account = accountDao.selectById(id);
+			//account = accountDao.selectById(id);
 			logger.info(builder.append(account).toString());
 			return account;
 		}catch(Exception e){
@@ -55,7 +56,7 @@ public class AccountService {
 		builder.append("selectByPhone:").append("cellphone = ").append(cellphone);
 		Account account = null;
 		try{
-			account = accountDao.selectByPhone(cellphone);
+			//account = accountDao.selectByPhone(cellphone);
 			logger.info(builder.append(account).toString());
 			return account;
 		}catch(Exception e){
@@ -69,7 +70,7 @@ public class AccountService {
 		builder.append("selectByEmail:").append("email = ").append(email);
 		Account account = null;
 		try{
-			account = accountDao.selectByEmail(email);
+			//account = accountDao.selectByEmail(email);
 			logger.info(builder.append(account).toString());
 			return account;
 		}catch(Exception e){
@@ -83,7 +84,7 @@ public class AccountService {
 		builder.append("updateAvatar:").append("id =").append(id).append(",avatar=").append(avatar);
 		int result = -1;
 		try{
-			result = accountDao.updateAvatar(id,avatar);
+			//result = accountDao.updateAvatar(id,avatar);
 			if(result > 0){
 				logger.info(builder.append("update is success").toString());
 			}else{
@@ -101,7 +102,7 @@ public class AccountService {
 		builder.append("deleteAccount:").append("id = ").append(id);
 		int result = -1;
 		try{
-			result = accountDao.deleteAccount(id);
+			//result = accountDao.deleteAccount(id);
 			if(result > 0){
 				logger.info(builder.append("delete account success").toString());
 			}else{

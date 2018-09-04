@@ -4,27 +4,12 @@
     <property name="APP_NAME" value="FameWiki" />
     <property name="LOG_FILE_EXPIRE_TIME" value="30" />
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | ${APP_NAME} - %p | %thread | %c | line:%L - %m%n</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="error" class="ch.qos.logback.core.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}${APP_NAME}.%d{yyyy-mm-dd}.log</fileNamePattern>
-            <maxHistory>${LOG_FILE_EXPIRE_TIME}</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern></pattern>
-        </encoder>
-    </appender>
-
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME}${APP_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>${LOG_FILE_EXPIRE_TIME}</maxHistory>
         </rollingPolicy>
+
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | ${APP_NAME} - %p | %thread | %c | line:%L - %m%n</pattern>
         </encoder>
@@ -32,7 +17,6 @@
 
     <root>
         <level value="INFO" />
-        <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>
 </configuration>

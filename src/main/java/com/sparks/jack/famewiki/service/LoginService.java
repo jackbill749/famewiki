@@ -1,6 +1,7 @@
 package com.sparks.jack.famewiki.service;
 
 import com.sparks.jack.famewiki.constant.Retcode;
+import com.sparks.jack.famewiki.db.dao.AccountDao;
 import com.sparks.jack.famewiki.db.model.Account;
 import com.sparks.jack.famewiki.result.BaseResult;
 import com.sparks.jack.famewiki.result.LoginResult;
@@ -31,7 +32,7 @@ public class LoginService {
         LoginResult result = new LoginResult(Retcode.SUCCESS);
 
         //根据用户名查询是否有此用户
-        Account account = accountDao.selectByName(username);
+        Account account = null;//accountDao.selectByName(username);
         if(account == null){
             logger.error("login failed: user is not exist");
             result.setError(Retcode.ACCOUNT_NOT_EXIST);
