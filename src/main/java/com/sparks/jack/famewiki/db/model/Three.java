@@ -72,7 +72,7 @@ public class Three implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Three[");
+		builder.append("three[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");

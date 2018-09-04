@@ -198,7 +198,7 @@ public class Immortal implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Immortal[");
+		builder.append("immortal[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");

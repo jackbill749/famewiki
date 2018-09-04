@@ -55,6 +55,7 @@ public class LoginController {
 		}
 		return result;
 	}
+<<<<<<< HEAD
 
 
 	@RequestMapping(value = "register",produces = "application/json")
@@ -63,4 +64,6 @@ public class LoginController {
 							   @RequestParam(value = "password",required = true)String password){
 		return null;
 	}
+=======
+>>>>>>> 9af31cf4fd91bc6dc3298d2e10f79adbe14fa176
 }

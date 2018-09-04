@@ -36,7 +36,7 @@ public class Country implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Country[");
+		builder.append("country[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");

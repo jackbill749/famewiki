@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 .idea/
 .settings/
 .classpath
 .project
 FameWiki.iml
 /target/
+=======
+/.idea/
+FameWiki.iml
+/target/
+>>>>>>> 9af31cf4fd91bc6dc3298d2e10f79adbe14fa176

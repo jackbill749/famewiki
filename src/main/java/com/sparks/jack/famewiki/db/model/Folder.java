@@ -45,7 +45,7 @@ public class Folder implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Folder[");
+		builder.append("folder[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");

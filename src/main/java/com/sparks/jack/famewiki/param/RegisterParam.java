@@ -1,5 +1,7 @@
 package com.sparks.jack.famewiki.param;
 
+import org.parboiled.common.StringUtils;
+
 import java.util.Date;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Date;
  * Date: 2018/3/12
  * Time: 22:59
  */
-public class RegisterParam {
+public class RegisterParam implements IParamCheck{
     private String username;    //用户名
     private String nickname;    //昵称
     private String salt;        //密码作料
@@ -155,5 +157,14 @@ public class RegisterParam {
                 ", rtime=" + rtime +
                 ", ip='" + ip + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean paramVerify() {
+        if(StringUtils.isEmpty(username) || StringUtils.isEmpty(nickname) || StringUtils.isEmpty(password) || gender < 0
+                || !isValidPhone(cellphone) || !isValidEmail(email)){
+            return false;
+        }
+        return true;
     }
 }

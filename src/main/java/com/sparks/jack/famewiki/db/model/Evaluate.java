@@ -63,7 +63,7 @@ public class Evaluate implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Evaluate[");
+		builder.append("evaluate[");
 		builder.append("id=");
 		builder.append(id);
 		builder.append(", ");
